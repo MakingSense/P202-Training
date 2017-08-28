@@ -61,7 +61,13 @@
     <Reference Include="Common.Logging.Core, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.Core.3.4.1\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NHibernate, Version=4.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.1.1.4000\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -112,6 +118,10 @@
     <ProjectReference Include="..\P202-Training.Domain\P202.Training.Domain.csproj">
       <Project>{96ace194-cdf6-4446-a37a-a671ac08c0e7}</Project>
       <Name>P202.Training.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\P202.Training.Data\P202.Training.Data.csproj">
+      <Project>{e6360cc3-4cde-4b02-829c-7cedc27d4794}</Project>
+      <Name>P202.Training.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

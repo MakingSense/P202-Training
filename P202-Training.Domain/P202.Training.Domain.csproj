@@ -44,5 +44,11 @@
     <Compile Include="IEchoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\P202.Training.Data\P202.Training.Data.csproj">
+      <Project>{e6360cc3-4cde-4b02-829c-7cedc27d4794}</Project>
+      <Name>P202.Training.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
