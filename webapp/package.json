@@ -1,0 +1,20 @@
+{
+  "name": "p202-training.durandal-webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "durandal": "^2.1.0",
+    "jquery": "^2.1.4",
+    "knockout": "^3.3.0"
+  },
+  "devDependencies": {
+    "html-loader": "^0.3.0",
+    "webpack-dev-server": "^1.15.0",
+    "webpack": "^1.10.5"
+  },
+  "scripts": {
+    "start": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

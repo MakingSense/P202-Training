@@ -29,3 +29,4 @@ _ReSharper*/
 [Tt]est[Rr]esult*
 packages/
 .vs/config/applicationhost.config
+webapp/node_modules/**/*
