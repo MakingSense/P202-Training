@@ -30,3 +30,4 @@ _ReSharper*/
 packages/
 .vs/config/applicationhost.config
 webapp/node_modules/**/*
+.vs/

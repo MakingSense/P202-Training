@@ -1,13 +1,14 @@
-﻿using Agatha.ServiceLayer;
+﻿using System;
+using System.Reflection;
+using Agatha.ServiceLayer;
 using Autofac;
 using Autofac.Integration.Wcf;
 using P202.Training.Data;
 using P202.Training.Data.Repositories;
 using P202.Training.Domain;
 using P202.Training.WCF.RequestsAndResponses;
-using System;
-using System.Reflection;
-using System.Web;
+using AutoMapper;
+using P202.Training.Data.Entities;
 
 namespace P202.Training.WCF
 {
@@ -28,6 +29,10 @@ namespace P202.Training.WCF
 
             // Register services
             builder.RegisterType<EchoService>().As<IEchoService>();
+            builder.RegisterType<UsersService>().As<IUsersService>();
+
+            // Register Automap
+            Mapper.Initialize(cfg => cfg.CreateMap<Data.Entities.User, Domain.Models.User>().ReverseMap());
 
             // Set the dependency resolver.
             var container = builder.Build();
@@ -36,20 +41,10 @@ namespace P202.Training.WCF
             var agathaContainer = new Agatha.Autofac.Container(container);
 
             new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(EchoRequest).Assembly, agathaContainer).Initialize();
-
-        }
-
-        protected void Application_BeginRequest(object sender, EventArgs e)
-        {
-            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
-            if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
-            {
-                HttpContext.Current.Response.AddHeader("Cache-Control", "no-cache");
-                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST");
-                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Headers", "Content-Type, Accept, Authorization");
-                HttpContext.Current.Response.AddHeader("Access-Control-Max-Age", "1728000");
-                HttpContext.Current.Response.End();
-            }
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(CreateUserRequest).Assembly, agathaContainer).Initialize();
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(DeleteUserRequest).Assembly, agathaContainer).Initialize();
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(UpdateUserRequest).Assembly, agathaContainer).Initialize();
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(ReadUserRequest).Assembly, agathaContainer).Initialize();
         }
     }
 }
