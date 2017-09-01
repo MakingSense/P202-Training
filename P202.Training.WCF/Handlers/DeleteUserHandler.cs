@@ -9,18 +9,16 @@ namespace P202.Training.WCF.Handlers
     public class DeleteUserHandler : RequestHandler<DeleteUserRequest, DeleteUserResponse>
     {
         private readonly IUsersService _usersService;
-        private readonly IUserRepository _userRepository;
 
-        public DeleteUserHandler(IUsersService usersService, IUserRepository userRepository)
+        public DeleteUserHandler(IUsersService usersService)
         {
             _usersService = usersService;
-            _userRepository = userRepository;
         }
 
         public override Response Handle(DeleteUserRequest request)
         {
             var response = CreateTypedResponse();
-            _usersService.DeleteUser(request.User, _userRepository);
+            _usersService.DeleteUser(request.User);
             return response;
         }
     }

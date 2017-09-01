@@ -9,18 +9,16 @@ namespace P202.Training.WCF.Handlers
     public class ListUsersHandler : RequestHandler<ListUsersRequest, ListUsersResponse>
     {
         private readonly IUsersService _usersService;
-        private readonly IUserRepository _userRepository;
 
-        public ListUsersHandler(IUsersService usersService, IUserRepository userRepository)
+        public ListUsersHandler(IUsersService usersService)
         {
             _usersService = usersService;
-            _userRepository = userRepository;
         }
 
         public override Response Handle(ListUsersRequest request)
         {
             var response = CreateTypedResponse();
-            response.UserList = _usersService.ListUsers(_userRepository);
+            response.UserList = _usersService.ListUsers();
 
             return response;
         }

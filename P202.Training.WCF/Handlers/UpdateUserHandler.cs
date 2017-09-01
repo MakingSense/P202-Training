@@ -9,13 +9,6 @@ namespace P202.Training.WCF.Handlers
     public class UpdateUserHandler : RequestHandler<UpdateUserRequest, UpdateUserResponse>
     {
         private readonly IUsersService _usersService;
-        private readonly IUserRepository _userRepository;
-
-        public UpdateUserHandler(IUsersService usersService, IUserRepository userRepository)
-        {
-            _usersService = usersService;
-            _userRepository = userRepository;
-        }
 
         public UpdateUserHandler(IUsersService usersService)
         {
@@ -25,7 +18,7 @@ namespace P202.Training.WCF.Handlers
         public override Response Handle(UpdateUserRequest request)
         {
             var response = CreateTypedResponse();
-            response.User = _usersService.UpdateUser(request.User, _userRepository);
+            response.User = _usersService.UpdateUser(request.User);
             return response;
         }
     }

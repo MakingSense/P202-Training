@@ -7,37 +7,32 @@ namespace P202.Training.Test
     {
         [Fact]
         public void UsersService_CreateData()
-        {
-            IUsersService usersService = new UsersService();
-            // TODO
+        {            
+            // TODO : Implement CreateUser OK method
         }
 
         [Fact]
         public void UsersService_DeleteData()
         {
-            IUsersService usersService = new UsersService();
-            // TODO
+            // TODO : Implement DeleteUser OK method
         }
 
         [Fact]
         public void UsersService_UpdateData()
         {
-            IUsersService usersService = new UsersService();
-            // TODO
+            // TODO : Implement UpdateUser OK method
         }
 
         [Fact]
         public void UsersService_ReadData()
         {
-            IUsersService usersService = new UsersService();
-            // TODO
+            // TODO : Implement ReadUser OK method
         }
 
         [Fact]
         public void UsersService_ListOfData()
         {
-            IUsersService usersService = new UsersService();
-            // TODO
+            // TODO : Implement Get all users OK method
         }
     }
 }

@@ -7,28 +7,37 @@ namespace P202.Training.Domain
 {
     public class UsersService : IUsersService
     {
-        public void CreateUser(User users, IUserRepository userRepository)
+        private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
+
+        public UsersService(IUserRepository userRepository, IMapper mapper)
+        {
+            _userRepository = userRepository;
+            _mapper = mapper;
+        }
+
+        public void CreateUser(User users)
         {
             if (users == null) return;
-            var mapUser = Mapper.Map<Data.Entities.User>(users);
-            userRepository.CreateUser(mapUser);
+            var mapUser = _mapper.Map<Data.Entities.User>(users);
+            _userRepository.CreateUser(mapUser);
         }
 
-        public void DeleteUser(int userId, IUserRepository userRepository)
+        public void DeleteUser(int userId)
         {
-            // TODO
+            // TODO: Implement delete User method
         }
 
-        public IList<User> ListUsers(IUserRepository userRepository)
+        public IList<User> ListUsers()
         {
-            var listUsers= userRepository.GetAllUsers();           
-            var mapUser = Mapper.Map<IList<User>>(listUsers);
+            var listUsers= _userRepository.GetAllUsers();           
+            var mapUser = _mapper.Map<IList<User>>(listUsers);
             return mapUser;
         }
 
-        public User ReadUser(int userId, IUserRepository userRepository)
+        public User ReadUser(int userId)
         {
-            // TODO
+            // TODO: Implement Read User method
             return new User()
             {
                 Email = "demo@demo.com",
@@ -36,9 +45,9 @@ namespace P202.Training.Domain
             };
         }
 
-        public User UpdateUser(User users, IUserRepository userRepository)
+        public User UpdateUser(User users)
         {
-            // TODO
+            // TODO: Implement update User method
             if (users != null)
             {
                 users.Username = "Updated";

@@ -5,6 +5,6 @@ namespace P202.Training.WCF.RequestsAndResponses
 {
     public class CreateUserRequest : Request
     {
-        public User NewUser{ get; set; }
+        public User NewUser { get; set; }
     }
 }

@@ -9,18 +9,16 @@ namespace P202.Training.WCF.Handlers
     public class CreateUserHandler : RequestHandler<CreateUserRequest, CreateUserResponse>
     {
         private readonly IUsersService _usersService;
-        private readonly IUserRepository _userRepository;
 
-        public CreateUserHandler(IUsersService usersService, IUserRepository userRepository)
+        public CreateUserHandler(IUsersService usersService)
         {
             _usersService = usersService;
-            _userRepository = userRepository;
         }
 
         public override Response Handle(CreateUserRequest request)
         {
             var response = CreateTypedResponse();
-            _usersService.CreateUser(request.NewUser, _userRepository);
+            _usersService.CreateUser(request.NewUser);
             return response;
         }
     }

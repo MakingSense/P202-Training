@@ -9,18 +9,16 @@ namespace P202.Training.WCF.Handlers
     public class ReadUserHandler : RequestHandler<ReadUserRequest, ReadUserResponse>
     {
         private readonly IUsersService _usersService;
-        private readonly IUserRepository _userRepository;
 
-        public ReadUserHandler(IUsersService usersService, IUserRepository userRepository)
+        public ReadUserHandler(IUsersService usersService)
         {
             _usersService = usersService;
-            _userRepository = userRepository;
         }
 
         public override Response Handle(ReadUserRequest request)
         {
             var response = CreateTypedResponse();
-            response.User = _usersService.ReadUser(request.User, _userRepository);
+            response.User = _usersService.ReadUser(request.User);
             return response;
         }
     }
