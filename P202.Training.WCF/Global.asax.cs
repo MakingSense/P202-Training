@@ -41,6 +41,13 @@ namespace P202.Training.WCF
             var agathaContainer = new Agatha.Autofac.Container(container);
 
             new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(EchoRequest).Assembly, agathaContainer).Initialize();
+
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(EchoRequest).Assembly, agathaContainer).Initialize();
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(CreateUserRequest).Assembly, agathaContainer).Initialize();
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(DeleteUserRequest).Assembly, agathaContainer).Initialize();
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(UpdateUserRequest).Assembly, agathaContainer).Initialize();
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(ReadUserRequest).Assembly, agathaContainer).Initialize();
+            
             //Role
             new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(RoleAddRequest).Assembly, agathaContainer).Initialize();
             new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(RoleReadRequest).Assembly, agathaContainer).Initialize();
