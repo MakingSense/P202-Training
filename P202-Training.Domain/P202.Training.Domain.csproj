@@ -52,11 +52,13 @@
   <ItemGroup>
     <Compile Include="EchoService.cs" />
     <Compile Include="IEchoService.cs" />
+    <Compile Include="IRoleService.cs" />
     <Compile Include="IUsersService.cs" />
     <Compile Include="Models\Base.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleService.cs" />
     <Compile Include="UsersService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +66,9 @@
       <Project>{e6360cc3-4cde-4b02-829c-7cedc27d4794}</Project>
       <Name>P202.Training.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
