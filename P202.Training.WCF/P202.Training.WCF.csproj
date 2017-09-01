@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +31,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\CodingStyles\CSharpStyleguide.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -54,6 +57,9 @@
     </Reference>
     <Reference Include="Autofac.Integration.Wcf, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.Wcf.4.0.0\lib\net45\Autofac.Integration.Wcf.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="Common.Logging, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.3.4.1\lib\net40\Common.Logging.dll</HintPath>
@@ -97,10 +103,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Handlers\CreateUserHandler.cs" />
+    <Compile Include="Handlers\DeleteUserHandler.cs" />
     <Compile Include="Handlers\EchoHandler.cs" />
+    <Compile Include="Handlers\ListUsersHandler.cs" />
+    <Compile Include="Handlers\ReadUserHandler.cs" />
+    <Compile Include="Handlers\UpdateUserHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestsAndResponses\CreateUserRequest.cs" />
+    <Compile Include="RequestsAndResponses\CreateUserResponse.cs" />
+    <Compile Include="RequestsAndResponses\DeleteUserRequest.cs" />
+    <Compile Include="RequestsAndResponses\DeleteUserResponse.cs" />
     <Compile Include="RequestsAndResponses\EchoResponse.cs" />
     <Compile Include="RequestsAndResponses\EchoRequest.cs" />
+    <Compile Include="RequestsAndResponses\ListUsersRequest.cs" />
+    <Compile Include="RequestsAndResponses\ListUsersResponse.cs" />
+    <Compile Include="RequestsAndResponses\ReadUserRequest.cs" />
+    <Compile Include="RequestsAndResponses\ReadUserResponse.cs" />
+    <Compile Include="RequestsAndResponses\UpdateUserRequest.cs" />
+    <Compile Include="RequestsAndResponses\UpdateUserResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -123,6 +145,14 @@
       <Project>{e6360cc3-4cde-4b02-829c-7cedc27d4794}</Project>
       <Name>P202.Training.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\P202.Training.Data\P202.Training.Data.csproj">
+      <Project>{e6360cc3-4cde-4b02-829c-7cedc27d4794}</Project>
+      <Name>P202.Training.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
