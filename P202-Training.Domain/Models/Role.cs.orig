@@ -1,0 +1,18 @@
+<<<<<<< HEAD
+﻿namespace P202.Training.Domain.Models
+{
+    public class Role: Base
+    {
+        public string Name { get; set; }
+    }
+}
+=======
+﻿
+namespace P202.Training.Domain.Models
+{
+    public class Role
+    {
+        public string Name { get; set; }
+    }
+}
+>>>>>>> [MLP-194][MLP-197][MLP-198][MLP-199][MLP-200] Api for create/read/update/delete a Role
