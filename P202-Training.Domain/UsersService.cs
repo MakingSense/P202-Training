@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AutoMapper;
-using P202.Training.Data;
-//using P202.Training.Data.Entities;
 using P202.Training.Data.Repositories;
 using P202.Training.Domain.Models;
 
@@ -25,7 +22,7 @@ namespace P202.Training.Domain
         public IList<User> ListUsers(IUserRepository userRepository)
         {
             var listUsers= userRepository.GetAllUsers();           
-            var mapUser = Mapper.Map<IList<Models.User>>(listUsers);
+            var mapUser = Mapper.Map<IList<User>>(listUsers);
             return mapUser;
         }
 

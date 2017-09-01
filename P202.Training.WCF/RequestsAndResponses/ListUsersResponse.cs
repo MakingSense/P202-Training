@@ -1,6 +1,6 @@
-﻿using Agatha.Common;
+﻿using System.Collections.Generic;
+using Agatha.Common;
 using P202.Training.Domain.Models;
-using System.Collections.Generic;
 
 namespace P202.Training.WCF.RequestsAndResponses
 {

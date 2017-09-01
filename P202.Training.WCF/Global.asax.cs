@@ -8,13 +8,11 @@ using P202.Training.Data.Repositories;
 using P202.Training.Domain;
 using P202.Training.WCF.RequestsAndResponses;
 using AutoMapper;
-using P202.Training.Data.Entities;
 
 namespace P202.Training.WCF
 {
     public class Global : System.Web.HttpApplication
     {
-
         protected void Application_Start(object sender, EventArgs e)
         {
             var builder = new ContainerBuilder();
