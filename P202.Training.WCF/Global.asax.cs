@@ -29,13 +29,15 @@ namespace P202.Training.WCF
             // Register services
             builder.RegisterType<EchoService>().As<IEchoService>();
             builder.RegisterType<UsersService>().As<IUsersService>();
+            builder.RegisterType<RoleService>().As<IRoleService>();
 
             // Register Automap
             builder.Register(c => new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Data.Entities.User, Domain.Models.User>().ForMember(user => user.UserRole, m => m.Ignore());
-                cfg.CreateMap<Data.Entities.Role, Domain.Models.Role>();
+                cfg.CreateMap<Data.Entities.Role, Domain.Models.Role>().ReverseMap();
             })).AsSelf().SingleInstance();
+
             builder.Register(c => c.Resolve<MapperConfiguration>().CreateMapper(c.Resolve)).As<IMapper>().InstancePerLifetimeScope();
 
             // Set the dependency resolver.

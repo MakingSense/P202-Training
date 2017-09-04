@@ -17,7 +17,7 @@ namespace P202.Training.WCF.Handlers
         public override Response Handle(RoleUpdateRequest request)
         {
             var response = CreateTypedResponse();
-            response.RoleUpdated = _roleService.UpdateRole(request.Id, request.Role);
+            response.RoleUpdated = _roleService.UpdateRole(request.Role);
             return response;
         }
     }

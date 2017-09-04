@@ -1,8 +1,8 @@
-﻿using P202.Training.Data.Entities;
-using P202.Training.Data.Repositories;
+﻿using P202.Training.Data.Repositories;
 using System.Collections.Generic;
-using P202.Training.Data;
 using AutoMapper;
+using System;
+using P202.Training.Domain.Models;
 
 namespace P202.Training.Domain
 {
@@ -20,42 +20,44 @@ namespace P202.Training.Domain
         public void CreateRole(Role role)
         {
             if (role == null) return;
-            var mapRole = _mapper.Map<Role>(role);
+            var mapRole = _mapper.Map<Data.Entities.Role>(role);
             _roleRepository.CreateRole(mapRole);
         }
 
         public bool DeleteRole(int roleId)
         {
-            // TODO: Implemente DeleteRole method
-            Role role = ReadRole(roleId);
-            return true;
+            try
+            {
+                var role = ReadRole(roleId);
+                var mapRole = _mapper.Map<Data.Entities.Role>(role);
+                _roleRepository.DeleteRole(mapRole);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
         }
 
         public IList<Role> ListRoles()
         {
             var listRoles = _roleRepository.GetAllRoles();
-            var mapRole = _mapper.Map<IList<Role>>(listRoles);
+            var mapRole = _mapper.Map<IList<Data.Entities.Role>, IList<Domain.Models.Role>>(listRoles);
             return mapRole;
         }
 
         public Role ReadRole(int id)
         {
-            // TODO: implemente DeleteRole method
-            Role role = new Role
-            {
-                Id = 1,
-                Name = "Admin"
-            };
-            return role;
+            var role = _roleRepository.GetRole(id);
+            var mapRole = _mapper.Map<Data.Entities.Role, Domain.Models.Role>(role);
+            return mapRole;
         }
 
-        public Role UpdateRole(int id, Role roleNew)
+        public Role UpdateRole(Role roleNew)
         {
-            //TODO: Implement update Role method
-            if (roleNew != null)
-            {
-                roleNew.Name = "Updated";
-            }
+            var mapRole = _mapper.Map<Data.Entities.Role>(roleNew);
+            var role = _roleRepository.UpdateRole(mapRole);
             return roleNew;
         }
     }

@@ -8,5 +8,7 @@ namespace P202.Training.Data.Repositories
         void CreateRole(Role role);
         void DeleteRole(Role role);
         IList<Role> GetAllRoles();
+        Role UpdateRole(Role role);
+        Role GetRole(int id);
     }
 }

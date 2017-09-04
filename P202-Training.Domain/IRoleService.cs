@@ -1,4 +1,4 @@
-﻿using P202.Training.Data.Entities;
+﻿using P202.Training.Domain.Models;
 using System.Collections.Generic;
 
 namespace P202.Training.Domain
@@ -11,7 +11,7 @@ namespace P202.Training.Domain
 
         IList<Role> ListRoles();
 
-        Role UpdateRole(int id, Role role);
+        Role UpdateRole(Role role);
 
         bool DeleteRole(int id);
     }

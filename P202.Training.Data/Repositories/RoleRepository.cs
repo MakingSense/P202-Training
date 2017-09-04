@@ -42,5 +42,26 @@ namespace P202.Training.Data.Repositories
                 transaction.Commit();
             }
         }
+
+        public Role UpdateRole(Role role)
+        {
+            using (var session = _sessionManager.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Update(role);
+                transaction.Commit();
+                return role;
+            }
+        }
+        
+        public Role GetRole(int id)
+        {
+            using (var session = _sessionManager.OpenSession())
+            {
+                // Create the criteria and load data
+                ICriteria criteria = session.CreateCriteria<Role>();
+                return criteria.UniqueResult<Role>();
+            }
+        }
     }
 }
