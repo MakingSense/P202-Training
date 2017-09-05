@@ -1,4 +1,4 @@
-define('services/echoService', [], function () {
+define('services/echoService', ['jquery'], function ($) {
 
   function echo(value) {
     // TODO: refactor common headers and base url
