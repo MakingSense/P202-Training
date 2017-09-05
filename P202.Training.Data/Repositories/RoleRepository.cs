@@ -1,6 +1,8 @@
 ﻿using NHibernate;
 using P202.Training.Data.Entities;
 using System.Collections.Generic;
+using P202.Training.Data.Configuration.Interfaces;
+using P202.Training.Data.Repositories.Interfaces;
 
 namespace P202.Training.Data.Repositories
 {

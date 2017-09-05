@@ -3,13 +3,15 @@ using System.Reflection;
 using Agatha.ServiceLayer;
 using Autofac;
 using Autofac.Integration.Wcf;
-using P202.Training.Data;
 using P202.Training.Data.Repositories;
-using P202.Training.Domain;
-using P202.Training.WCF.RequestsAndResponses;
 using AutoMapper;
-using System.Collections.Generic;
 using System.Web;
+using P202.Training.Data.Configuration;
+using P202.Training.Data.Configuration.Interfaces;
+using P202.Training.Data.Repositories.Interfaces;
+using P202.Training.Domain.Services;
+using P202.Training.Domain.Services.Interfaces;
+using P202.Training.WCF.Requests;
 
 namespace P202.Training.WCF
 {

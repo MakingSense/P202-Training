@@ -1,8 +1,8 @@
 ﻿using Agatha.Common;
 using Agatha.ServiceLayer;
-using P202.Training.Data.Repositories;
-using P202.Training.Domain;
-using P202.Training.WCF.RequestsAndResponses;
+using P202.Training.Domain.Services.Interfaces;
+using P202.Training.WCF.Requests;
+using P202.Training.WCF.Responses;
 
 namespace P202.Training.WCF.Handlers
 {
