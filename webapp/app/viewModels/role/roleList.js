@@ -9,12 +9,9 @@ define(['services/roleService'], function (roleService) {
     roles: ko.observableArray([])   
     };
     
-
     vm.activate = function () {
 
         return roleService.roleReadAll().then(function (response) {
-            console.log(response.ProcessJsonRequestsPostResult[0].Roles);
-
             vm.roles(response.ProcessJsonRequestsPostResult[0].Roles);
         });
 
