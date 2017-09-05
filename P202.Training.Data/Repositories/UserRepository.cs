@@ -1,4 +1,5 @@
 ﻿using NHibernate;
+using NHibernate.Criterion;
 using P202.Training.Data.Entities;
 using System.Collections.Generic;
 
@@ -27,13 +28,41 @@ namespace P202.Training.Data.Repositories
             }
         }
 
+        public void DeleteUser(User user)
+        {
+            using (var session = _sessionManager.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Delete(user);
+                transaction.Commit();
+            }
+        }
+
         public IList<User> GetAllUsers()
         {
             using (var session = _sessionManager.OpenSession())
             {
-                // Create the criteria and load data
                 ICriteria criteria = session.CreateCriteria<User>();
                 return criteria.List<User>();
+            }
+        }
+
+        public User GetUser(User user)
+        {
+            using (var session = _sessionManager.OpenSession())
+            {
+                ICriteria criteria = session.CreateCriteria<User>().Add(Restrictions.Eq("Id", user.Id));
+                return criteria.UniqueResult<User>();
+            }
+        }
+
+        public void UpdateUser(User user)
+        {
+            using (var session = _sessionManager.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                session.SaveOrUpdate(user);
+                transaction.Commit();
             }
         }
     }
