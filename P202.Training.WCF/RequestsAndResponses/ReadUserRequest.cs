@@ -5,6 +5,6 @@ namespace P202.Training.WCF.RequestsAndResponses
 {
     public class ReadUserRequest : Request
     {
-        public User User { get; set; }
+        public int Id { get; set; }
     }
 }

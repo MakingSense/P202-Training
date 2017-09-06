@@ -23,11 +23,9 @@ namespace P202.Training.Domain
             _userRepository.CreateUser(mapUser);
         }
 
-        public void DeleteUser(User user)
+        public void DeleteUser(int id)
         {
-            if (user == null) return;
-            var mapUser = _mapper.Map<Data.Entities.User>(user);
-            _userRepository.DeleteUser(mapUser);
+            _userRepository.DeleteUser(id);
         }
 
         public IList<User> ListUsers()
@@ -37,16 +35,11 @@ namespace P202.Training.Domain
             return mapUser;
         }
 
-        public User ReadUser(User user)
+        public User ReadUser(int id)
         {
-            if (user != null)
-            {
-                var mapUser = _mapper.Map<Data.Entities.User>(user);
-                var listUsers = _userRepository.GetUser(mapUser);
-                var mapUserResp = _mapper.Map<User>(listUsers);
-                return mapUserResp;
-            }
-            return null;
+            var listUsers = _userRepository.GetUser(id);
+            var mapUserResp = _mapper.Map<User>(listUsers);
+            return mapUserResp;
         }
 
         public void UpdateUser(User user)

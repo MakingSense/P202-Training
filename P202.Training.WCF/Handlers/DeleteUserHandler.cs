@@ -18,7 +18,7 @@ namespace P202.Training.WCF.Handlers
         public override Response Handle(DeleteUserRequest request)
         {
             var response = CreateTypedResponse();
-            _usersService.DeleteUser(request.User);
+            _usersService.DeleteUser(request.Id);
             return response;
         }
     }

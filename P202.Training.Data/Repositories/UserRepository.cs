@@ -28,11 +28,12 @@ namespace P202.Training.Data.Repositories
             }
         }
 
-        public void DeleteUser(User user)
+        public void DeleteUser(int id)
         {
             using (var session = _sessionManager.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
+                var user = session.Load<User>(id);
                 session.Delete(user);
                 transaction.Commit();
             }
@@ -47,11 +48,11 @@ namespace P202.Training.Data.Repositories
             }
         }
 
-        public User GetUser(User user)
+        public User GetUser(int id)
         {
             using (var session = _sessionManager.OpenSession())
             {
-                ICriteria criteria = session.CreateCriteria<User>().Add(Restrictions.Eq("Id", user.Id));
+                ICriteria criteria = session.CreateCriteria<User>().Add(Restrictions.Eq("Id", id));
                 return criteria.UniqueResult<User>();
             }
         }

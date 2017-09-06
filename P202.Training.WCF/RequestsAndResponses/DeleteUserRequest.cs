@@ -5,6 +5,6 @@ namespace P202.Training.WCF.RequestsAndResponses
 {
     public class DeleteUserRequest : Request
     {
-        public User User { get; set; }
+        public int Id { get; set; }
     }
 }
