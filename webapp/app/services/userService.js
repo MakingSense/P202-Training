@@ -19,7 +19,7 @@ define('services/userService', [], function () {
     }
           
       function GetUser() {
-        var data = '{"requests":[{"__type":"ReadUserRequest:#P202.Training.WCF.RequestsAndResponses","User":' + value + '}]}'
+        var data = '{"requests":[{"__type":"ReadUserRequest:#P202.Training.WCF.RequestsAndResponses","Id":' + value + '}]}'
         return newAjaxCall(data);
       }
 
@@ -29,7 +29,7 @@ define('services/userService', [], function () {
       }
 
       function DeleteUser() {
-        var data = '{"requests":[{"__type":"DeleteUserRequest:#P202.Training.WCF.RequestsAndResponses","User":' + value + '}]}'      
+        var data = '{"requests":[{"__type":"DeleteUserRequest:#P202.Training.WCF.RequestsAndResponses","Id":' + value + '}]}'      
         return newAjaxCall(data);
       }
 
