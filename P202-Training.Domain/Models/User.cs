@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace P202.Training.Domain.Models
+﻿namespace P202.Training.Domain.Models
 {
     public class User : Base
     {
