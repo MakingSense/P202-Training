@@ -2,8 +2,7 @@ define(['services/echoService', 'jquery'], function(echoService, jquery) {
 
   beforeEach(function () {
     spyOn(jquery, 'ajax').and.callFake(function() {
-        var deferred = jQuery.Deferred();
-        return deferred.promise();
+        return Q({});
     });
   });
 

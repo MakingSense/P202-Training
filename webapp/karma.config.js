@@ -18,6 +18,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       { pattern: 'node_modules/jquery/dist/jquery.min.js', included: true },
+      { pattern: 'node_modules/q/q.js', included: true },
       { pattern: 'node_modules/knockout/build/output/knockout-latest.js', included: true },
       { pattern: 'dist/app.js', included: true },
       'test/**/*spec.js'

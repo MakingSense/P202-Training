@@ -11,9 +11,7 @@ define(['viewModels/echo/echo', 'services/echoService'], function(echoViewModel,
 
   beforeEach(function () {
     spyOn(echoService, 'echo').and.callFake(function() {
-        var deferred = jQuery.Deferred();
-        deferred.resolve(fakeEchoResponse);
-        return deferred.promise();
+        return Q(fakeEchoResponse);
     });
   });
 
@@ -30,12 +28,13 @@ define(['viewModels/echo/echo', 'services/echoService'], function(echoViewModel,
       echoViewModel.value(valueToTest);
 
       // Act
-      echoViewModel.sendEcho();
+      echoViewModel.sendEcho().then(function () {
 
-      // Assert
-      expect(echoService.echo).toHaveBeenCalledTimes(1);
-      expect(echoService.echo).toHaveBeenCalledWith(valueToTest);
-      expect(echoViewModel.echoResponse()).toBe(fakeEchoResponse.ProcessJsonRequestsPostResult[0].Value);
+        // Assert
+        expect(echoService.echo).toHaveBeenCalledTimes(1);
+        expect(echoService.echo).toHaveBeenCalledWith(valueToTest);
+        expect(echoViewModel.echoResponse()).toBe(fakeEchoResponse.ProcessJsonRequestsPostResult[0].Value);
+      });
     });
 
   });
