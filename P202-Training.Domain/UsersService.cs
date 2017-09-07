@@ -30,7 +30,7 @@ namespace P202.Training.Domain
 
         public IList<User> ListUsers()
         {
-            var listUsers= _userRepository.GetAllUsers();           
+            var listUsers= _userRepository.GetAllUsers();
             var mapUser = _mapper.Map<IList<User>>(listUsers);
             return mapUser;
         }
