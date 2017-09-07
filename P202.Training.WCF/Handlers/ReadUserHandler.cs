@@ -18,7 +18,7 @@ namespace P202.Training.WCF.Handlers
         public override Response Handle(ReadUserRequest request)
         {
             var response = CreateTypedResponse();
-            response.User = _usersService.ReadUser(request.User);
+            response.User = _usersService.ReadUser(request.Id);
             return response;
         }
     }

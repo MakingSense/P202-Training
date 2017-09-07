@@ -7,9 +7,9 @@ namespace P202.Training.Domain
     public interface IUsersService
     {
         void CreateUser(User users);
-        User ReadUser(int userId);
+        User ReadUser(int id);
         User UpdateUser(User users);
-        void DeleteUser(int userId);
+        void DeleteUser(int id);
         IList<User> ListUsers();
     }
 }

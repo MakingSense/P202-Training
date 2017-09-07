@@ -16,43 +16,39 @@ namespace P202.Training.Domain
             _mapper = mapper;
         }
 
-        public void CreateUser(User users)
+        public void CreateUser(User user)
         {
-            if (users == null) return;
-            var mapUser = _mapper.Map<Data.Entities.User>(users);
+            if (user == null) return;
+            var mapUser = _mapper.Map<Data.Entities.User>(user);
             _userRepository.CreateUser(mapUser);
         }
 
-        public void DeleteUser(int userId)
+        public void DeleteUser(int id)
         {
-            // TODO: Implement delete User method
+            _userRepository.DeleteUser(id);
         }
 
         public IList<User> ListUsers()
         {
-            var listUsers= _userRepository.GetAllUsers();           
+            var listUsers= _userRepository.GetAllUsers();
             var mapUser = _mapper.Map<IList<User>>(listUsers);
             return mapUser;
         }
 
-        public User ReadUser(int userId)
+        public User ReadUser(int id)
         {
-            // TODO: Implement Read User method
-            return new User()
-            {
-                Email = "demo@demo.com",
-                Username = "DemoUser"
-            };
+            var listUsers = _userRepository.GetUser(id);
+            var mapUserResp = _mapper.Map<User>(listUsers);
+            return mapUserResp;
         }
 
-        public User UpdateUser(User users)
+        public User UpdateUser(User user)
         {
-            // TODO: Implement update User method
-            if (users != null)
-            {
-                users.Username = "Updated";
-            }
-            return users;
+            if (user == null) return user;
+            var mapUser = _mapper.Map<Data.Entities.User>(user);
+            var respUpdateUser = _userRepository.UpdateUser(mapUser);
+            var unmapUser = _mapper.Map<User>(respUpdateUser);
+            return unmapUser;
         }
     }
 }

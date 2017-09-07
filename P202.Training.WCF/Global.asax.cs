@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Reflection;
+using System.Web;
 using Agatha.ServiceLayer;
 using Autofac;
 using Autofac.Integration.Wcf;
+using AutoMapper;
 using P202.Training.Data;
 using P202.Training.Data.Repositories;
 using P202.Training.Domain;
 using P202.Training.WCF.RequestsAndResponses;
-using AutoMapper;
-using System.Collections.Generic;
-using System.Web;
 
 namespace P202.Training.WCF
 {
@@ -32,7 +31,11 @@ namespace P202.Training.WCF
             builder.RegisterType<UsersService>().As<IUsersService>();
 
             // Register Automap
-            builder.Register(c => new MapperConfiguration(cfg => cfg.CreateMap<Data.Entities.User, Domain.Models.User>().ReverseMap())).AsSelf().SingleInstance();
+            builder.Register(c => new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Data.Entities.User, Domain.Models.User>().ForMember(user => user.UserRole, m => m.Ignore());
+                cfg.CreateMap<Data.Entities.Role, Domain.Models.Role>();
+            })).AsSelf().SingleInstance();
             builder.Register(c => c.Resolve<MapperConfiguration>().CreateMapper(c.Resolve)).As<IMapper>().InstancePerLifetimeScope();
 
             // Set the dependency resolver.
@@ -48,8 +51,8 @@ namespace P202.Training.WCF
             new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(DeleteUserRequest).Assembly, agathaContainer).Initialize();
             new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(UpdateUserRequest).Assembly, agathaContainer).Initialize();
             new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(ReadUserRequest).Assembly, agathaContainer).Initialize();
-            
-            //Role
+
+            // Role
             new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(RoleAddRequest).Assembly, agathaContainer).Initialize();
             new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(RoleReadRequest).Assembly, agathaContainer).Initialize();
             new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(RoleReadAllRequest).Assembly, agathaContainer).Initialize();
