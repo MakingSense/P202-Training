@@ -12,7 +12,7 @@ define('Echo', ['services/echoService'], function (echoService) {
   };
 
   function sendEcho() {
-    return echoService.echo(this.value()).then(function(response) {
+    return echoService.echo(this.value()).then(function (response) {
       vm.echoResponse(response.ProcessJsonRequestsPostResult[0].Value);
     });
   }

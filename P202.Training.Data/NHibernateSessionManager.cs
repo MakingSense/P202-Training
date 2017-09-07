@@ -14,7 +14,7 @@ namespace P202.Training.Data
         {
             InitializeSessionFactory();
         }
-        
+
         private void InitializeSessionFactory()
         {
             _sessionFactory = Fluently.Configure()

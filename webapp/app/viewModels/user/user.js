@@ -1,5 +1,5 @@
 define(['services/userService'], function (userService) {
-  var vm =  {
+  var vm = {
     getView: function () {
       var view = require('./user.html');
       return $.parseHTML(view)[0];
@@ -7,11 +7,11 @@ define(['services/userService'], function (userService) {
     users: ko.observableArray([])
   };
 
-  vm.activate = function(){       
-    return userService.ListUsers().then(function(response) {      
+  vm.activate = function () {
+    return userService.ListUsers().then(function (response) {
       vm.users = response.ProcessJsonRequestsPostResult[0].UserList;
-    });    
+    });
   };
-  
+
   return vm;
 });
