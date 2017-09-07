@@ -19,7 +19,8 @@ namespace P202.Training.Domain
 
         public void CreateRole(Role role)
         {
-            if (role == null) return;
+            if (role == null)
+                return;
             var mapRole = _mapper.Map<Role>(role);
             _roleRepository.CreateRole(mapRole);
         }

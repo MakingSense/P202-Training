@@ -1,28 +1,28 @@
-define(['viewModels/echo/echo', 'services/echoService'], function(echoViewModel, echoService) {
-  
+define(['viewModels/echo/echo', 'services/echoService'], function (echoViewModel, echoService) {
+
   var fakeEchoResponse = {
-    ProcessJsonRequestsPostResult:[
+    ProcessJsonRequestsPostResult: [
       {
-        __type:"EchoResponse:#P202.Training.WCF.RequestsAndResponses",
-        Value:"You entered: 5"
+        __type: "EchoResponse:#P202.Training.WCF.RequestsAndResponses",
+        Value: "You entered: 5"
       }
     ]
   };
 
   beforeEach(function () {
-    spyOn(echoService, 'echo').and.callFake(function() {
-        return Q(fakeEchoResponse);
+    spyOn(echoService, 'echo').and.callFake(function () {
+      return Q(fakeEchoResponse);
     });
   });
 
-  describe('echo viewModel', function(){
-    
-    it('should be not null', function(){
+  describe('echo viewModel', function () {
+
+    it('should be not null', function () {
       // Assert
       expect(echoViewModel).not.toBe(null);
     });
 
-    it('sendEcho should call echoService with value and update VM', function() {
+    it('sendEcho should call echoService with value and update VM', function () {
       // Arrange
       var valueToTest = 5;
       echoViewModel.value(valueToTest);
@@ -38,5 +38,5 @@ define(['viewModels/echo/echo', 'services/echoService'], function(echoViewModel,
     });
 
   });
-  
+
 });

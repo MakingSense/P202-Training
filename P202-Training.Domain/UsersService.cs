@@ -18,7 +18,8 @@ namespace P202.Training.Domain
 
         public void CreateUser(User user)
         {
-            if (user == null) return;
+            if (user == null)
+                return;
             var mapUser = _mapper.Map<Data.Entities.User>(user);
             _userRepository.CreateUser(mapUser);
         }
@@ -30,7 +31,7 @@ namespace P202.Training.Domain
 
         public IList<User> ListUsers()
         {
-            var listUsers= _userRepository.GetAllUsers();
+            var listUsers = _userRepository.GetAllUsers();
             var mapUser = _mapper.Map<IList<User>>(listUsers);
             return mapUser;
         }
@@ -44,7 +45,8 @@ namespace P202.Training.Domain
 
         public User UpdateUser(User user)
         {
-            if (user == null) return user;
+            if (user == null)
+                return user;
             var mapUser = _mapper.Map<Data.Entities.User>(user);
             var respUpdateUser = _userRepository.UpdateUser(mapUser);
             var unmapUser = _mapper.Map<User>(respUpdateUser);
