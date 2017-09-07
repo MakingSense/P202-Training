@@ -42,13 +42,13 @@ namespace P202.Training.Domain
             return mapUserResp;
         }
 
-        public void UpdateUser(User user)
+        public User UpdateUser(User user)
         {
-            if (user != null)
-            {
-                var mapUser = _mapper.Map<Data.Entities.User>(user);
-                _userRepository.UpdateUser(mapUser);
-            }
+            if (user == null) return user;
+            var mapUser = _mapper.Map<Data.Entities.User>(user);
+            var respUpdateUser = _userRepository.UpdateUser(mapUser);
+            var unmapUser = _mapper.Map<User>(respUpdateUser);
+            return unmapUser;
         }
     }
 }

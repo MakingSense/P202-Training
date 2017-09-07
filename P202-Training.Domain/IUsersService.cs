@@ -8,7 +8,7 @@ namespace P202.Training.Domain
     {
         void CreateUser(User users);
         User ReadUser(int id);
-        void UpdateUser(User users);
+        User UpdateUser(User users);
         void DeleteUser(int id);
         IList<User> ListUsers();
     }

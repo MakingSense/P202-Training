@@ -7,7 +7,7 @@ namespace P202.Training.Data.Repositories
     {
         void CreateUser(User user);
         void DeleteUser(int id);
-        void UpdateUser(User user);
+        User UpdateUser(User user);
         User GetUser(int id);
         IList<User> GetAllUsers();
     }

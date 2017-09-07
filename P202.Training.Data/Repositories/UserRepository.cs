@@ -57,7 +57,7 @@ namespace P202.Training.Data.Repositories
             }
         }
 
-        public void UpdateUser(User user)
+        public User UpdateUser(User user)
         {
             using (var session = _sessionManager.OpenSession())
             using (var transaction = session.BeginTransaction())
@@ -65,6 +65,7 @@ namespace P202.Training.Data.Repositories
                 session.SaveOrUpdate(user);
                 transaction.Commit();
             }
+            return user;
         }
     }
 }
