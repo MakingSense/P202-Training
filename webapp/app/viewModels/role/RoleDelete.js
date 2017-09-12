@@ -4,16 +4,17 @@ define(['services/roleService'], function (roleService) {
     
     var vm = {
         getView: function () {
-            var view = require('./roleAdd.html');
+            var view = require('./roleDelete.html');
             return $.parseHTML(view)[0];
         },
-        name: ko.observable(),
-        roleAdd: roleAdd,
+        name: ko.observable(0),
+        roleDelete: roleDelete,
         roleResponse: ko.observable('')
     };
 
-    function roleAdd() {
-        roleService.roleAdd(this.name()).then(function (response) {            
+    function roleDelete() {
+        console.log('Voy a Llamar a la Funcion');
+        roleService.roleDelete(this.name()).then(function (response) {            
             vm.roleResponse(response.ProcessJsonRequestsPostResult[0].Value);
         });
     }
