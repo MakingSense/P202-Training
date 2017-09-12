@@ -2,13 +2,19 @@
     <table>
         <thead>
             <tr>
+                <th>Edit</th>
                 <th>Id</th>
                 <th>Rol Description</th>
                 <th>Created By</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody data-bind="foreach : roles">
             <tr>
+                <td>
+                    <!--<input type="checkbox" data-bind="checked: isDone" />-->
+                    <input type="checkbox" />
+                </td>
                 <td>                  
                     <span data-bind="text:Id"></span>
                 </td>
@@ -17,6 +23,10 @@
                 </td>
                 <td>                    
                     <span data-bind="text:CreatedBy"></span>
+                </td>
+                <td>
+                    <!--<button data-bind="click:remove">Delete</button>-->
+                    <button>Delete</button>
                 </td>                
             </tr>
         </tbody>
