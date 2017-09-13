@@ -21,7 +21,11 @@ define('services/roleService', [], function () {
     }
 
     function roleDelete(roleId) {
-        // TODO: refactor common headers and base url        
+        // TODO: refactor common headers and base url  
+        console.log('roleServie - roleDelete');
+        console.log('valor de roleId');
+        console.log(roleId);
+        console.log('valor de roleId');
         return $.ajax({
             type: 'POST',
             contentType: 'application/json',
