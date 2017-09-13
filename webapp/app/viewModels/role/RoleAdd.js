@@ -14,9 +14,8 @@ define(['services/roleService'], function (roleService) {
 
     function roleAdd() {
         roleService.roleAdd(this.name()).then(function (response) {  
-            console.log('Return off ADD')                        
-            return { redirect: '#roleList' };
-            return '#roleList';
+            var url = '#roleList/';
+            route.navigate(url);            
         });
     }
 
