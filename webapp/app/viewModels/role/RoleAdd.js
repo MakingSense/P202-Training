@@ -13,8 +13,10 @@ define(['services/roleService'], function (roleService) {
     };
 
     function roleAdd() {
-        roleService.roleAdd(this.name()).then(function (response) {            
-            vm.roleResponse(response.ProcessJsonRequestsPostResult[0].Value);
+        roleService.roleAdd(this.name()).then(function (response) {  
+            console.log('Return off ADD')                        
+            return { redirect: '#roleList' };
+            return '#roleList';
         });
     }
 

@@ -12,8 +12,7 @@ define(['services/roleService'], function (roleService) {
         roleResponse: ko.observable('')
     };
 
-    function roleDelete() {
-        console.log('Voy a Llamar a la Funcion');
+    function roleDelete() {        
         roleService.roleDelete(this.name()).then(function (response) {            
             vm.roleResponse(response.ProcessJsonRequestsPostResult[0].Value);
         });

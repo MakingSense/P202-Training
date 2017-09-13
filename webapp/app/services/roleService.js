@@ -1,7 +1,6 @@
 define('services/roleService', [], function () {
 
-    function roleReadAll() {
-        console.log('Entre a llamar WebService')
+    function roleReadAll() {        
         return $.ajax({
             type: 'POST',
             contentType: 'application/json',
@@ -10,27 +9,24 @@ define('services/roleService', [], function () {
         });
     }
 
-    function roleAdd(value) {
-        var roleIns = {
-            "Name":value
-        };              
-        var roleInsJs = JSON.stringify(roleIns);
+    function roleAdd(roleName) {
+        var role = {"Name":roleName};              
+        var roleJson = JSON.stringify(role);        
         return $.ajax({
             type: 'POST',
             contentType: 'application/json',
             url: 'http://localhost:10160/Service.svc/jsonp/post',
-            data: '{"requests":[{"__type":"RoleAddRequest:#P202.Training.WCF.RequestsAndResponses","Role":' + roleInsJs + '}]}'
+            data: '{"requests":[{"__type":"RoleAddRequest:#P202.Training.WCF.RequestsAndResponses","Role":' + roleJson + '}]}'
         });
     }
 
-    function roleDelete(value) {
-        // TODO: refactor common headers and base url
-        console.log('roleServices.js/rokeDelete');
+    function roleDelete(roleId) {
+        // TODO: refactor common headers and base url        
         return $.ajax({
             type: 'POST',
             contentType: 'application/json',
             url: 'http://localhost:10160/Service.svc/jsonp/post',
-            data: '{"requests":[{"__type":"RoleDeleteRequest:#P202.Training.WCF.RequestsAndResponses","RoleId":' + value + '}]}'
+            data: '{"requests":[{"__type":"RoleDeleteRequest:#P202.Training.WCF.RequestsAndResponses","RoleId":' + roleId + '}]}'
         });
     }
 
