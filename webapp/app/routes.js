@@ -36,15 +36,7 @@ module.exports = [
             return require('viewModels/role/roleAdd');
         },
         nav: true
-    },
-    {
-        route: 'roleDelete',
-        title: 'Role Delete',
-        moduleId: function () {
-            return require('viewModels/role/roleDelete');
-        },
-        nav: true
-    },
+    },    
 	{
 		route: 'user', 
 		title: 'User',
