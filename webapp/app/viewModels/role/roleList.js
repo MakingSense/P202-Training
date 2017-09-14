@@ -14,12 +14,13 @@ define(['services/roleService'], function (roleService) {
             if (response.ProcessJsonRequestsPostResult[0].Deleted) {
                 vm.roleResponse("The role " + role.Name + " has been successfully removed");
             }
-            else
-            {
+            else {
                 vm.roleResponse("The role " + role.Name + " could not be removed, try after please");
             }
-           
-        })
+
+        }).catch(function () {
+            vm.roleResponse("there was a Problem, try later");
+        });
 
     }    
     };
