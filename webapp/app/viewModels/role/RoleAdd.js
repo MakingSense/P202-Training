@@ -13,9 +13,8 @@ define(['services/roleService'], function (roleService) {
     };
 
     function roleAdd() {
-        roleService.roleAdd(this.name()).then(function (response) {  
-            var url = '#roleList/';
-            route.navigate(url);            
+        roleService.roleAdd(this.name()).then(function (response) {              
+            route.navigate('#roleList/');            
         });
     }
 

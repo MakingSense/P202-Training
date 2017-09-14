@@ -9,9 +9,8 @@ define('services/roleService', [], function () {
         });
     }
 
-    function roleAdd(roleName) {
-        var role = {"Name":roleName};              
-        var roleJson = JSON.stringify(role);        
+    function roleAdd(roleName) {                     
+        var roleJson = JSON.stringify(role = { "Name": roleName });        
         return $.ajax({
             type: 'POST',
             contentType: 'application/json',
