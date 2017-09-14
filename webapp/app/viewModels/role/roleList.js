@@ -11,8 +11,16 @@ define(['services/roleService'], function (roleService) {
     roleResponse: ko.observable(''),
     remove: function (role) {       
         roleService.roleDelete(role.Id).then(function (response) {
-            vm.roleResponse("The role " + role.Name +" has been successfully removed");           
+            if (response.ProcessJsonRequestsPostResult[0].Deleted) {
+                vm.roleResponse("The role " + role.Name + " has been successfully removed");
+            }
+            else
+            {
+                vm.roleResponse("The role " + role.Name + " could not be removed, try after please");
+            }
+           
         })
+
     }    
     };
 
