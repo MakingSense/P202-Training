@@ -12,16 +12,15 @@ define(['services/roleService'], function (roleService) {
     remove: function (role) {       
         roleService.roleDelete(role.Id).then(function (response) {
             if (response.ProcessJsonRequestsPostResult[0].Deleted) {
+                vm.roles.remove(role);
                 vm.roleResponse("The role " + role.Name + " has been successfully removed");
             }
             else {
                 vm.roleResponse("The role " + role.Name + " could not be removed, try after please");
             }
-
         }).catch(function () {
             vm.roleResponse("there was a Problem, try later");
         });
-
     }    
     };
 
