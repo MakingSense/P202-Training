@@ -1,0 +1,1 @@
+﻿- Test to see if configured git repo works fine
