@@ -1,4 +1,5 @@
 ﻿using NHibernate;
+using NHibernate.Criterion;
 using P202.Training.Data.Entities;
 using System.Collections.Generic;
 
@@ -59,7 +60,7 @@ namespace P202.Training.Data.Repositories
             using (var session = _sessionManager.OpenSession())
             {
                 // Create the criteria and load data
-                ICriteria criteria = session.CreateCriteria<Role>();
+                ICriteria criteria = session.CreateCriteria<Role>().Add(Restrictions.Eq("Id", id)); 
                 return criteria.UniqueResult<Role>();
             }
         }

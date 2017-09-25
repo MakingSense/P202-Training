@@ -2,13 +2,15 @@
     <table>
         <thead>
             <tr>
+                <th>Edit</th>
                 <th>Id</th>
                 <th>Rol Description</th>
                 <th>Created By</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody data-bind="foreach : roles">
-            <tr>
+            <tr>                
                 <td>                  
                     <span data-bind="text:Id"></span>
                 </td>
@@ -17,8 +19,15 @@
                 </td>
                 <td>                    
                     <span data-bind="text:CreatedBy"></span>
+                </td>
+                <td>                    
+                    <button data-bind="click:$parent.remove">Delete</button>
                 </td>                
             </tr>
         </tbody>
     </table>
+    <div>
+        Response:
+        <span data-bind="text: roleResponse"></span>
+    </div>
 </section>

@@ -21,6 +21,7 @@ namespace P202.Training.Domain
         {
             if (role == null) return;
             var mapRole = _mapper.Map<Data.Entities.Role>(role);
+            mapRole.CreatedOn = DateTime.Now;
             _roleRepository.CreateRole(mapRole);
         }
 
@@ -48,7 +49,7 @@ namespace P202.Training.Domain
         }
 
         public Role ReadRole(int id)
-        {
+        {           
             var role = _roleRepository.GetRole(id);
             var mapRole = _mapper.Map<Data.Entities.Role, Domain.Models.Role>(role);
             return mapRole;

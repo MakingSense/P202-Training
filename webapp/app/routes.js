@@ -28,7 +28,15 @@ module.exports = [
 			return require('viewModels/role/roleList');
 		},
 		nav: true
-	},
+    },
+    {
+        route: 'roleAdd',
+        title: 'Role Add',
+        moduleId: function () {
+            return require('viewModels/role/roleAdd');
+        },
+        nav: true
+    },    
 	{
 		route: 'user', 
 		title: 'User',
