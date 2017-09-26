@@ -17,11 +17,13 @@ namespace P202.Training.Domain
             _mapper = mapper;
         }
 
-        public void CreateRole(Role role)
+        public Role CreateRole(Role role)
         {
-            if (role == null) return;
+            if (role == null)
+                return null;
+
             var mapRole = _mapper.Map<Data.Entities.Role>(role);
-            _roleRepository.CreateRole(mapRole);
+            return  _mapper.Map<Models.Role>(_roleRepository.Create(mapRole));
         }
 
         public bool DeleteRole(int roleId)
@@ -30,7 +32,7 @@ namespace P202.Training.Domain
             {
                 var role = ReadRole(roleId);
                 var mapRole = _mapper.Map<Data.Entities.Role>(role);
-                _roleRepository.DeleteRole(mapRole);
+                _roleRepository.Delete(mapRole);
                 return true;
             }
             catch (Exception ex)
@@ -42,14 +44,14 @@ namespace P202.Training.Domain
 
         public IList<Role> ListRoles()
         {
-            var listRoles = _roleRepository.GetAllRoles();
+            var listRoles = _roleRepository.FindAll();
             var mapRole = _mapper.Map<IList<Data.Entities.Role>, IList<Domain.Models.Role>>(listRoles);
             return mapRole;
         }
 
         public Role ReadRole(int id)
         {
-            var role = _roleRepository.GetRole(id);
+            var role = _roleRepository.FindById(id);
             var mapRole = _mapper.Map<Data.Entities.Role, Domain.Models.Role>(role);
             return mapRole;
         }
@@ -57,7 +59,7 @@ namespace P202.Training.Domain
         public Role UpdateRole(Role roleNew)
         {
             var mapRole = _mapper.Map<Data.Entities.Role>(roleNew);
-            var role = _roleRepository.UpdateRole(mapRole);
+            var role = _roleRepository.Update(mapRole);
             return roleNew;
         }
     }

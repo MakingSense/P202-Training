@@ -4,7 +4,6 @@ using P202.Training.Data.Entities;
 using P202.Training.Data.Repositories;
 using P202.Training.Domain;
 using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
 namespace P202.Training.Test
@@ -30,8 +29,8 @@ namespace P202.Training.Test
                 Name = "Admin"
             };
 
-            roleRepositoryMock.Setup(r => r.CreateRole(It.IsAny<Role>()));
-            roleRepositoryMock.Setup(r => r.GetRole(It.IsAny<int>())).Returns(entityRole);
+            roleRepositoryMock.Setup(r => r.Create(It.IsAny<Role>()));
+            roleRepositoryMock.Setup(r => r.FindById(It.IsAny<int>())).Returns(entityRole);
 
             mapperMock.Setup(m => m.Map<Domain.Models.Role, Data.Entities.Role>(It.IsAny<Domain.Models.Role>()))
                             .Returns(entityRole);
@@ -46,7 +45,7 @@ namespace P202.Training.Test
             roleService.CreateRole(modelRole);
 
             //Assert that the Add method was called once
-            roleRepositoryMock.Verify(x => x.CreateRole(It.IsAny<Data.Entities.Role>()), Times.Once());
+            roleRepositoryMock.Verify(x => x.Create(It.IsAny<Data.Entities.Role>()), Times.Once());
 
             var expectedRole = roleService.ReadRole(1);
 
@@ -62,15 +61,15 @@ namespace P202.Training.Test
             var roleRepositoryMock = new Mock<IRoleRepository>();
             var mapperMock = new Mock<IMapper>();
             var deleteRole = new Role();
-            roleRepositoryMock.Setup(x => x.DeleteRole(deleteRole));
+            roleRepositoryMock.Setup(x => x.Delete(deleteRole));
 
             //Act
-            roleRepositoryMock.Object.DeleteRole(deleteRole);            
+            roleRepositoryMock.Object.Delete(deleteRole);            
             var roleService = new RoleService(roleRepositoryMock.Object, mapperMock.Object);
             roleService.DeleteRole(deleteRole.Id);
 
             //Assert
-            roleRepositoryMock.Verify(x => x.DeleteRole(deleteRole), Times.Once());
+            roleRepositoryMock.Verify(x => x.Delete(deleteRole), Times.Once());
         }
 
         [Fact]
@@ -80,16 +79,16 @@ namespace P202.Training.Test
             var roleRepositoryMock = new Mock<IRoleRepository>();
             var mapperMock = new Mock<IMapper>();
             var updateRole = new Role { Name = "new-role-name" };
-            roleRepositoryMock.Setup(x => x.UpdateRole(updateRole)).Returns(updateRole);
+            roleRepositoryMock.Setup(x => x.Update(updateRole)).Returns(updateRole);
 
             //Act
-            roleRepositoryMock.Object.UpdateRole(updateRole);
+            roleRepositoryMock.Object.Update(updateRole);
             var roleService = new RoleService(roleRepositoryMock.Object, mapperMock.Object);
             var mapRole = mapperMock.Object.Map<Domain.Models.Role>(updateRole);
             roleService.UpdateRole(mapRole);
 
             //Assert
-            roleRepositoryMock.Verify(x => x.UpdateRole(updateRole), Times.Once());
+            roleRepositoryMock.Verify(x => x.Update(updateRole), Times.Once());
         }
 
         [Fact]
@@ -101,7 +100,7 @@ namespace P202.Training.Test
             var entitiesRole = new Data.Entities.Role { Id = 1 };
             var modelRole = new Domain.Models.Role { Id = 1 };
 
-            roleRepositoryMock.Setup(r => r.GetRole(It.IsAny<int>())).Returns(entitiesRole);
+            roleRepositoryMock.Setup(r => r.FindById(It.IsAny<int>())).Returns(entitiesRole);
 
             mapperMock.Setup(m => m.Map<Data.Entities.Role, Domain.Models.Role>(It.IsAny<Data.Entities.Role>()))
                             .Returns(modelRole);
@@ -114,7 +113,7 @@ namespace P202.Training.Test
             var expectedRole = roleService.ReadRole(1);
 
             // Assert
-            roleRepositoryMock.Verify(x => x.GetRole(It.IsAny<int>()), Times.Once());
+            roleRepositoryMock.Verify(x => x.FindById(It.IsAny<int>()), Times.Once());
             Assert.Equal(modelRole.Id, expectedRole.Id);
         }
 
@@ -143,7 +142,7 @@ namespace P202.Training.Test
                 }
             };
 
-            roleRepositoryMock.Setup(r => r.GetAllRoles()).Returns(rolEntitiesList);
+            roleRepositoryMock.Setup(r => r.FindAll()).Returns(rolEntitiesList);
             mapperMock.Setup(m => m.Map<IList<Data.Entities.Role>, IList<Domain.Models.Role>>(It.IsAny<IList<Data.Entities.Role>>()))
                 .Returns(rolModelsList);
 
@@ -155,7 +154,7 @@ namespace P202.Training.Test
             var expectedRoles = roleService.ListRoles();
 
             //Assert that the List method was called once
-            roleRepositoryMock.Verify(x => x.GetAllRoles(), Times.Once());
+            roleRepositoryMock.Verify(x => x.FindAll(), Times.Once());
 
             // Assert
             Assert.Equal(2, expectedRoles.Count);

@@ -1,5 +1,4 @@
-﻿using P202.Training.Domain;
-using Xunit;
+﻿using Xunit;
 
 namespace P202.Training.Test
 {

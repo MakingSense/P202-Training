@@ -2,7 +2,7 @@
 
 namespace P202.Training.Data.Entities
 {
-    public class Base
+    public abstract class Base
     {
         /// <summary>
         /// Entity identifier
