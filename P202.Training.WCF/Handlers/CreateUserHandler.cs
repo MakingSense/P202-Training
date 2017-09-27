@@ -17,7 +17,7 @@ namespace P202.Training.WCF.Handlers
         public override Response Handle(CreateUserRequest request)
         {
             var response = CreateTypedResponse();
-            _usersService.CreateUser(request.NewUser);
+            response.NewUser = _usersService.CreateUser(request.NewUser);
             return response;
         }
     }
