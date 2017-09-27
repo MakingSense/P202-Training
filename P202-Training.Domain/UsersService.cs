@@ -22,7 +22,7 @@ namespace P202.Training.Domain
                 return null;
 
             var mapUser = _mapper.Map<Data.Entities.User>(user);
-            return _mapper.Map <Models.User>(_userRepository.Create(mapUser));
+            return _mapper.Map<Models.User>(_userRepository.Create(mapUser));
         }
 
         public void DeleteUser(int id)
@@ -46,11 +46,40 @@ namespace P202.Training.Domain
 
         public User UpdateUser(User user)
         {
-            if (user == null) return user;
-            var mapUser = _mapper.Map<Data.Entities.User>(user);
-            var respUpdateUser = _userRepository.Update(mapUser);
-            var unmapUser = _mapper.Map<User>(respUpdateUser);
-            return unmapUser;
+            if (user != null && user.Id > 0)
+            {
+                var entityUser = _userRepository.FindById(user.Id);
+                if (entityUser != null)
+                {
+                    entityUser = MapToUserEntityFromUserModelForUpdate(user, entityUser);
+                    user = _mapper.Map<Domain.Models.User>(_userRepository.Update(entityUser));
+                }
+            }
+            return user;
         }
+
+        private Data.Entities.User MapToUserEntityFromUserModelForUpdate(Domain.Models.User sourceUserModel, Data.Entities.User targetUserEntity)
+        {
+            targetUserEntity = _mapper.Map<Domain.Models.User, Data.Entities.User>(sourceUserModel, targetUserEntity,
+            
+                            opt =>
+                                opt.BeforeMap((src, dest)
+                                =>
+                                {
+                                    src.CreatedBy = dest.CreatedBy;
+                                    src.CreatedOn = dest.CreatedOn;
+                                   
+                                    if (src.UserRole == null && dest.UserRole != null)
+                                    {
+                                        src.UserRole = _mapper.Map<Role>(dest.UserRole);
+                                    }
+
+                                })
+                            );
+                            
+            return targetUserEntity;
+        }
+
+
     }
 }

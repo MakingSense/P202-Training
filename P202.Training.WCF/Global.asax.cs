@@ -34,8 +34,13 @@ namespace P202.Training.WCF
             // Register Automap
             builder.Register(c => new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Data.Entities.User, Domain.Models.User>().ForMember(user => user.UserRole, m => m.Ignore());
-                cfg.CreateMap<Data.Entities.Role, Domain.Models.Role>().ReverseMap();
+                cfg.CreateMap<Data.Entities.User, Domain.Models.User>();
+
+                cfg.CreateMap<Domain.Models.User, Data.Entities.User>().ForAllMembers(opt => opt.Condition(src => src != null));
+
+                cfg.CreateMap<Data.Entities.Role, Domain.Models.Role>();
+
+                cfg.CreateMap<Domain.Models.Role, Data.Entities.Role>();
             })).AsSelf().SingleInstance();
 
             builder.Register(c => c.Resolve<MapperConfiguration>().CreateMapper(c.Resolve)).As<IMapper>().InstancePerLifetimeScope();

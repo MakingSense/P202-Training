@@ -18,7 +18,7 @@ namespace P202.Training.Data.Mapping
             Map(x => x.UpdatedBy);
             Map(x => x.UpdatedOn);
 
-            References(x => x.UserRole).Column("RoleId");
+            References(x => x.UserRole).Column("RoleId").LazyLoad(Laziness.False);
 
             Table("[dbo].[User]");
         }
