@@ -17,7 +17,7 @@ namespace P202.Training.WCF.Handlers
         public override Response Handle(RoleAddRequest request)
         {
             var response = CreateTypedResponse();
-            _roleService.CreateRole(request.Role);
+            response.RoleCreated = _roleService.CreateRole(request.Role);
             return response;
         }
     }

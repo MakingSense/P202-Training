@@ -5,7 +5,7 @@ namespace P202.Training.Domain
 {
     public interface IRoleService
     {
-        void CreateRole(Role role);
+        Role CreateRole(Role role);
 
         Role ReadRole(int id);
 
