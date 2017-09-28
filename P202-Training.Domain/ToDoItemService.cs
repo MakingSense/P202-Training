@@ -22,39 +22,72 @@ namespace P202.Training.Domain
             _mapper = mapper;
         }
 
-        public void CreateToDoItem(ToDoItem toDoItem)
+        
+
+        public ToDoItem CreateToDoItem(ToDoItem toDoItem)
         {
-            if (toDoItem == null) return;
+            if (toDoItem == null)
+                return null;
+
             var mapToDoItem = _mapper.Map<Data.Entities.ToDoItem>(toDoItem);
-            _toDoItemRepository.CreateToDoItem(mapToDoItem);
+            return _mapper.Map<Models.ToDoItem>(_toDoItemRepository.Create(mapToDoItem));
         }
 
         public void DeleteToDoItem(int id)
         {
-            _toDoItemRepository.DeleteToDoItem(id);
+            _toDoItemRepository.DeleteByCriteria(x => x.Id == id);
         }
 
         public IList<ToDoItem> ListToDoItem()
         {
-            var listToDoItem = _toDoItemRepository.GetAllToDoItem();
-            var mapToDoItem = _mapper.Map<IList<ToDoItem>>(listToDoItem);
+            
+            var listToDoItems = _toDoItemRepository.FindAll();
+            var mapToDoItem = _mapper.Map<IList<ToDoItem>>(listToDoItems);
             return mapToDoItem;
         }
+        
 
         public ToDoItem ReadToDoItem(int id)
         {
-            var listToDoItem = _toDoItemRepository.GetToDoItem(id);
-            var mapToDoItemResp = _mapper.Map<ToDoItem>(listToDoItem);
+            var listToDoItems = _toDoItemRepository.FindById(id);
+            var mapToDoItemResp = _mapper.Map<ToDoItem>(listToDoItems);
             return mapToDoItemResp;
         }
 
-        public ToDoItem UpdateToDoItem(ToDoItem toDoItem)
+        public ToDoItem UpdateToDoItem(ToDoItem ToDoItem)
         {
-            if (toDoItem == null) return toDoItem;
-            var mapToDoItem = _mapper.Map<Data.Entities.ToDoItem>(toDoItem);
-            var respUpdateToDoItem = _toDoItemRepository.UpdateToDoItem(mapToDoItem);
-            var unmapToDoItem = _mapper.Map<ToDoItem>(respUpdateToDoItem);
-            return unmapToDoItem;
+            if (ToDoItem != null && ToDoItem.Id > 0)
+            {
+                var entityToDoItem = _toDoItemRepository.FindById(ToDoItem.Id);
+                if (entityToDoItem != null)
+                {
+                    entityToDoItem = MapToToDoItemEntityFromToDoItemModelForUpdate(ToDoItem, entityToDoItem);
+                    ToDoItem = _mapper.Map<Domain.Models.ToDoItem>(_toDoItemRepository.Update(entityToDoItem));
+                }
+            }
+            return ToDoItem;
+        }
+
+        private Data.Entities.ToDoItem MapToToDoItemEntityFromToDoItemModelForUpdate(Domain.Models.ToDoItem sourceToDoItemModel, Data.Entities.ToDoItem targetToDoItemEntity)
+        {
+            targetToDoItemEntity = _mapper.Map<Domain.Models.ToDoItem, Data.Entities.ToDoItem>(sourceToDoItemModel, targetToDoItemEntity,
+
+                            opt =>
+                                opt.BeforeMap((src, dest)
+                                =>
+                                {
+                                    src.CreatedBy = dest.CreatedBy;
+                                    src.CreatedOn = dest.CreatedOn;
+
+                                    if (src.ToDoList == null && dest.ToDoList != null)
+                                    {
+                                        src.ToDoList = _mapper.Map<ToDoList>(dest.ToDoList);
+                                    }
+
+                                })
+                            );
+
+            return targetToDoItemEntity;
         }
     }
 }

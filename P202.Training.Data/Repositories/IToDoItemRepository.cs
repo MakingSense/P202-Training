@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace P202.Training.Data.Repositories
 {
-    public interface IToDoItemRepository
+    public interface IToDoItemRepository : IBaseRepository<ToDoItem>
     {
 
-        void CreateToDoItem(ToDoItem toDoItem);
-        void DeleteToDoItem(int id);
-        ToDoItem UpdateToDoItem(ToDoItem toDoItem);
-        ToDoItem GetToDoItem(int id);
-        IList<ToDoItem> GetAllToDoItem();
     }
 }
