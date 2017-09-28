@@ -1,6 +1,5 @@
 ﻿using Agatha.Common;
 using Agatha.ServiceLayer;
-using P202.Training.Data.Repositories;
 using P202.Training.Domain;
 using P202.Training.WCF.RequestsAndResponses;
 

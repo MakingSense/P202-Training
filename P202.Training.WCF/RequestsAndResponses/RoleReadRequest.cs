@@ -1,5 +1,4 @@
 ﻿using Agatha.Common;
-using P202.Training.Data;
 
 namespace P202.Training.WCF.RequestsAndResponses
 {

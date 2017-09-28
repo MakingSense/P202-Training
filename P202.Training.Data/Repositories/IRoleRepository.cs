@@ -1,14 +1,8 @@
-﻿using System.Collections.Generic;
-using P202.Training.Data.Entities;
+﻿using P202.Training.Data.Entities;
 
 namespace P202.Training.Data.Repositories
 {
-    public interface IRoleRepository
+    public interface IRoleRepository : IBaseRepository<Role>
     {
-        void CreateRole(Role role);
-        void DeleteRole(Role role);
-        IList<Role> GetAllRoles();
-        Role UpdateRole(Role role);
-        Role GetRole(int id);
     }
 }

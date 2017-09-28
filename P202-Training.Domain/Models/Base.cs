@@ -2,7 +2,7 @@
 
 namespace P202.Training.Domain.Models
 {
-    public class Base
+    public abstract class Base
     {
         public int Id { get; set; }
         public string CreatedBy { get; set; }
