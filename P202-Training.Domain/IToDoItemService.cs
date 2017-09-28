@@ -10,10 +10,13 @@ namespace P202.Training.Domain
     public interface IToDoItemService
     {
 
-        void CreateToDoItem(ToDoItem toDoItem);
+        ToDoItem CreateToDoItem(ToDoItem toDoItem);
         ToDoItem ReadToDoItem(int id);
         ToDoItem UpdateToDoItem(ToDoItem toDoItem);
         void DeleteToDoItem(int id);
         IList<ToDoItem> ListToDoItem();
+
+
+        
     }
 }
