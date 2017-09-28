@@ -53,12 +53,18 @@
     <Compile Include="EchoService.cs" />
     <Compile Include="IEchoService.cs" />
     <Compile Include="IRoleService.cs" />
+    <Compile Include="IToDoItemService.cs" />
+    <Compile Include="IToDoListService.cs" />
     <Compile Include="IUsersService.cs" />
     <Compile Include="Models\Base.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\ToDoItem.cs" />
+    <Compile Include="Models\ToDoList.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleService.cs" />
+    <Compile Include="ToDoItemService.cs" />
+    <Compile Include="ToDoListService.cs" />
     <Compile Include="UsersService.cs" />
   </ItemGroup>
   <ItemGroup>
