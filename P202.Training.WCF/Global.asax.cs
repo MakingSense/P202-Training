@@ -25,11 +25,15 @@ namespace P202.Training.WCF
             // Register repositories
             builder.RegisterType<UserRepository>().As<IUserRepository>();
             builder.RegisterType<RoleRepository>().As<IRoleRepository>();
+            builder.RegisterType<ToDoListRepository>().As<IToDoListRepository>();
+            builder.RegisterType<ToDoItemRepository>().As<IToDoItemRepository>();
 
             // Register services
             builder.RegisterType<EchoService>().As<IEchoService>();
             builder.RegisterType<UsersService>().As<IUsersService>();
             builder.RegisterType<RoleService>().As<IRoleService>();
+            builder.RegisterType<ToDoListService>().As<IToDoListService>();
+            builder.RegisterType<ToDoItemService>().As<IToDoItemService>();
 
             // Register Automap
             builder.Register(c => new MapperConfiguration(cfg =>
@@ -41,6 +45,9 @@ namespace P202.Training.WCF
                 cfg.CreateMap<Data.Entities.Role, Domain.Models.Role>();
 
                 cfg.CreateMap<Domain.Models.Role, Data.Entities.Role>();
+
+                cfg.CreateMap<Data.Entities.ToDoList, Domain.Models.ToDoList>().ReverseMap();
+                cfg.CreateMap<Data.Entities.ToDoItem, Domain.Models.ToDoItem>().ForMember(todoList => todoList.ToDoList, m => m.Ignore());
             })).AsSelf().SingleInstance();
 
             builder.Register(c => c.Resolve<MapperConfiguration>().CreateMapper(c.Resolve)).As<IMapper>().InstancePerLifetimeScope();
