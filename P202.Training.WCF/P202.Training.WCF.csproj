@@ -114,6 +114,7 @@
     <Compile Include="Handlers\RoleReadAllHandler.cs" />
     <Compile Include="Handlers\ToDoList\ToDoItemCreateHandle.cs" />
     <Compile Include="Handlers\ToDoList\ToDoItemListHandler.cs" />
+    <Compile Include="Handlers\ToDoList\ToDoListCreateHandler.cs" />
     <Compile Include="Handlers\ToDoList\ToDoListListHandler.cs" />
     <Compile Include="Handlers\UpdateUserHandler.cs" />
     <Compile Include="Handlers\RoleReadHandler.cs" />
@@ -143,6 +144,8 @@
     <Compile Include="RequestsAndResponses\ToDoList\ToDoItemCreateRequest.cs" />
     <Compile Include="RequestsAndResponses\ToDoList\ToDoItemListRequest.cs" />
     <Compile Include="RequestsAndResponses\ToDoList\ToDoItemListResponse.cs" />
+    <Compile Include="RequestsAndResponses\ToDoList\ToDoListCreateRequest.cs" />
+    <Compile Include="RequestsAndResponses\ToDoList\ToDoListCreateResponse.cs" />
     <Compile Include="RequestsAndResponses\ToDoList\ToDoListListRequest.cs" />
     <Compile Include="RequestsAndResponses\ToDoList\ToDoListListResponse.cs" />
     <Compile Include="RequestsAndResponses\ToDoList\ToDoListReadRequest.cs" />
