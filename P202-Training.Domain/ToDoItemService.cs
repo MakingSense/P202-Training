@@ -11,8 +11,6 @@ namespace P202.Training.Domain
 {
     public class ToDoItemService: IToDoItemService
     {
-
-
         private readonly IToDoItemRepository _toDoItemRepository;
         private readonly IMapper _mapper;
 
@@ -21,9 +19,6 @@ namespace P202.Training.Domain
             _toDoItemRepository = ToDoItemRepository;
             _mapper = mapper;
         }
-
-        
-
         public ToDoItem CreateToDoItem(ToDoItem toDoItem)
         {
             if (toDoItem == null)
@@ -31,21 +26,17 @@ namespace P202.Training.Domain
 
             var mapToDoItem = _mapper.Map<Data.Entities.ToDoItem>(toDoItem);
             return _mapper.Map<Models.ToDoItem>(_toDoItemRepository.Create(mapToDoItem));
-
         }
-
         public void DeleteToDoItem(int id)
         {
             _toDoItemRepository.DeleteByCriteria(x => x.Id == id);
         }
-
         public IList<ToDoItem> ListToDoItem()
         {
             var listToDoItems = _toDoItemRepository.FindAll();
             var mapToDoItem = _mapper.Map<IList<Data.Entities.ToDoItem>, IList<Domain.Models.ToDoItem>>(listToDoItems);
             return mapToDoItem;
         }
-        
 
         public ToDoItem ReadToDoItem(int id)
         {

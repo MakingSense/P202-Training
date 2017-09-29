@@ -10,7 +10,6 @@ namespace P202.Training.Domain.Models
     {
         public string Description { get; set; }
         public int Priority { get; set; }
-
         public ToDoList ToDoList { get; set; }
     }
 }
