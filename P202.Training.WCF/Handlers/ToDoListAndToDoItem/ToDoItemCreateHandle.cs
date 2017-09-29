@@ -1,17 +1,12 @@
 ﻿using Agatha.ServiceLayer;
-using P202.Training.WCF.RequestsAndResponses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Agatha.Common;
 using P202.Training.Domain;
+using P202.Training.WCF.RequestsAndResponses.ToDoListAndToDoItem;
 
-namespace P202.Training.WCF.Handlers.ToDoList
+namespace P202.Training.WCF.Handlers.ToDoListAndToDoItem
 {
     public class ToDoItemCreateHandle : RequestHandler<ToDoItemCreateRquest, ToDoItemCreateResponse>
     {
-
         private readonly IToDoItemService _toDoItemService;
 
         public ToDoItemCreateHandle(IToDoItemService toDoItemService)
