@@ -6,6 +6,7 @@
             <th>Email</th>
             <th>First name</th>
             <th>Last name</th>
+            <th>Role</th>
             <th>CreatedBy</th>
             <th>UpdatedBy</th>
             <th>CreatedOn</th>
@@ -15,10 +16,11 @@
     <tbody data-bind="foreach: users">
         <tr>
             <td data-bind="text: Id"></td>
-            <td data-bind="text: Username"></td>
+            <td data-bind="text: UserName"></td>
             <td data-bind="text: Email"></td>
             <td data-bind="text: FirstName"></td>
             <td data-bind="text: LastName"></td>
+            <td data-bind="text: $data.UserRole.Name"></td>
             <td data-bind="text: CreatedBy"></td>
             <td data-bind="text: UpdatedBy"></td>
             <td data-bind="text: CreatedOn"></td>
