@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 
 namespace P202.Training.Data.Repositories
 {
-    public interface IToDoListRepository
+    public interface IToDoListRepository : IBaseRepository<ToDoList>
     {
 
-        void CreateToDoList(ToDoList user);
-        void DeleteToDoList(int id);
-        ToDoList UpdateToDoList(ToDoList user);
-        ToDoList GetToDoList(int id);
-        IList<ToDoList> GetAllToDoList();
     }
+    
 }
