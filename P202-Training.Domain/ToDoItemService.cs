@@ -40,9 +40,8 @@ namespace P202.Training.Domain
 
         public IList<ToDoItem> ListToDoItem()
         {
-            
             var listToDoItems = _toDoItemRepository.FindAll();
-            var mapToDoItem = _mapper.Map<IList<ToDoItem>>(listToDoItems);
+            var mapToDoItem = _mapper.Map<IList<Data.Entities.ToDoItem>, IList<Domain.Models.ToDoItem>>(listToDoItems);
             return mapToDoItem;
         }
         
@@ -54,18 +53,18 @@ namespace P202.Training.Domain
             return mapToDoItemResp;
         }
 
-        public ToDoItem UpdateToDoItem(ToDoItem ToDoItem)
+        public ToDoItem UpdateToDoItem(ToDoItem toDoItem)
         {
-            if (ToDoItem != null && ToDoItem.Id > 0)
+            if (toDoItem != null && toDoItem.Id > 0)
             {
-                var entityToDoItem = _toDoItemRepository.FindById(ToDoItem.Id);
+                var entityToDoItem = _toDoItemRepository.FindById(toDoItem.Id);
                 if (entityToDoItem != null)
                 {
-                    entityToDoItem = MapToToDoItemEntityFromToDoItemModelForUpdate(ToDoItem, entityToDoItem);
-                    ToDoItem = _mapper.Map<Domain.Models.ToDoItem>(_toDoItemRepository.Update(entityToDoItem));
+                    entityToDoItem = MapToToDoItemEntityFromToDoItemModelForUpdate(toDoItem, entityToDoItem);
+                    toDoItem = _mapper.Map<Domain.Models.ToDoItem>(_toDoItemRepository.Update(entityToDoItem));
                 }
             }
-            return ToDoItem;
+            return toDoItem;
         }
 
         private Data.Entities.ToDoItem MapToToDoItemEntityFromToDoItemModelForUpdate(Domain.Models.ToDoItem sourceToDoItemModel, Data.Entities.ToDoItem targetToDoItemEntity)
