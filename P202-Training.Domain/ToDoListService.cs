@@ -16,11 +16,12 @@ namespace P202.Training.Domain
             _mapper = mapper;
         }
 
-        public void CreateToDoList(ToDoList toDoList)
+        public ToDoList CreateToDoList(ToDoList toDoList)
         {
-            if (toDoList == null) return;
-            var mapToDoList = _mapper.Map<Data.Entities.ToDoList>(toDoList);
-            _toDoListRepository.Create(mapToDoList);
+            if (toDoList == null)
+                return null;
+            var mapToDoItem = _mapper.Map<Data.Entities.ToDoList>(toDoList);
+            return _mapper.Map<Models.ToDoList>(_toDoListRepository.Create(mapToDoItem));
         }
 
         public void DeleteToDoList(int id)
@@ -37,8 +38,8 @@ namespace P202.Training.Domain
 
         public ToDoList ReadToDoList(int id)
         {
-            var listToDoList = _toDoListRepository.FindById(id);
-            var mapToDoListResp = _mapper.Map<ToDoList>(listToDoList);
+            var ToDoList = _toDoListRepository.FindById(id);
+            var mapToDoListResp = _mapper.Map<Data.Entities.ToDoList, Domain.Models.ToDoList>(ToDoList);
             return mapToDoListResp;
         }
 

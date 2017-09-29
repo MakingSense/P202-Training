@@ -31,6 +31,7 @@ namespace P202.Training.Domain
 
             var mapToDoItem = _mapper.Map<Data.Entities.ToDoItem>(toDoItem);
             return _mapper.Map<Models.ToDoItem>(_toDoItemRepository.Create(mapToDoItem));
+
         }
 
         public void DeleteToDoItem(int id)
@@ -48,8 +49,8 @@ namespace P202.Training.Domain
 
         public ToDoItem ReadToDoItem(int id)
         {
-            var listToDoItems = _toDoItemRepository.FindById(id);
-            var mapToDoItemResp = _mapper.Map<ToDoItem>(listToDoItems);
+            var toDoItem = _toDoItemRepository.FindById(id);
+            var mapToDoItemResp = _mapper.Map<Data.Entities.ToDoItem, Domain.Models.ToDoItem> (toDoItem);
             return mapToDoItemResp;
         }
 

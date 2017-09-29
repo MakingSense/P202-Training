@@ -5,7 +5,7 @@ namespace P202.Training.Domain
 {
     public interface IToDoListService
     {
-        void CreateToDoList(ToDoList toDoList);
+        ToDoList CreateToDoList(ToDoList toDoList);
         ToDoList ReadToDoList(int id);
         ToDoList UpdateToDoList(ToDoList toDoList);
         void DeleteToDoList(int id);

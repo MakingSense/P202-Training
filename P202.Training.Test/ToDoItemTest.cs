@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Moq;
+using P202.Training.Data.Entities;
 using P202.Training.Data.Repositories;
 using P202.Training.Domain;
 using System;
@@ -14,6 +15,50 @@ namespace P202.Training.Test
 
     public class ToDoItemTest
     {
+        [Fact]
+        public void CreateToDoList_PersistsChange()
+        {
+            // Arrange
+            var ToDoItemRepositoryMock = new Mock<IToDoItemRepository>();
+            var mapperMock = new Mock<IMapper>();
+
+            var modelToDoItem = new Domain.Models.ToDoItem
+            {
+                Id = 1,
+                Description = "ToDoItem A"
+            };
+
+            var entityToDoItem = new Data.Entities.ToDoItem
+            {
+                Id = 1,
+                Description = "ToDoItem B"
+            };
+
+            ToDoItemRepositoryMock.Setup(r => r.Create(It.IsAny<ToDoItem>()));
+            ToDoItemRepositoryMock.Setup(r => r.FindById(It.IsAny<int>())).Returns(entityToDoItem);
+
+            mapperMock.Setup(m => m.Map<Domain.Models.ToDoItem, Data.Entities.ToDoItem>(It.IsAny<Domain.Models.ToDoItem>()))
+                            .Returns(entityToDoItem);
+            mapperMock.Setup(m => m.Map<Data.Entities.ToDoItem, Domain.Models.ToDoItem>(It.IsAny<Data.Entities.ToDoItem>()))
+                .Returns(modelToDoItem);
+
+            // Act
+            var ToDoItemRepositoryMockObject = ToDoItemRepositoryMock.Object;
+            var mappingServiceMockObject = mapperMock.Object;
+
+            var ToDoItemService = new ToDoItemService(ToDoItemRepositoryMockObject, mappingServiceMockObject);
+            ToDoItemService.CreateToDoItem(modelToDoItem);
+
+            //Assert that the Add method was called once
+            ToDoItemRepositoryMock.Verify(x => x.Create(It.IsAny<Data.Entities.ToDoItem>()), Times.Once());
+
+            var expectedToDoItem = ToDoItemService.ReadToDoItem(1);
+
+            // Assert
+            Assert.Equal(modelToDoItem.Description, expectedToDoItem.Description);
+        }
+
+
         [Fact]
         public void GetToDoItem_ListData()
         {
