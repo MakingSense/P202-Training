@@ -36,5 +36,29 @@ module.exports = [
 			return require('viewModels/user/user');
 		},
 			nav: true
+	},
+	{
+		route: 'toDoList', 
+		title: 'ToDoList',
+		moduleId: function() {
+			return require('viewModels/toDoList/toDoList');
+		},
+			nav: true
+	},
+	{
+		route: 'toDoItems', 
+		title: 'ToDoItem',
+		moduleId: function() {
+			return require('viewModels/toDoItem/toDoItem');
+		},
+			nav: true
+	},	
+	{
+		route: 'AddToDoList', 
+		title: 'AddToDoList',
+		moduleId: function() {
+			return require('viewModels/toDoList/AddToDoList');
+		},
+			nav: false
 	}	
 ];

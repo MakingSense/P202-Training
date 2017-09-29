@@ -9,6 +9,7 @@ using P202.Training.Data;
 using P202.Training.Data.Repositories;
 using P202.Training.Domain;
 using P202.Training.WCF.RequestsAndResponses;
+using P202.Training.WCF.RequestsAndResponses.ToDoListAndToDoItem;
 
 namespace P202.Training.WCF
 {
@@ -25,11 +26,15 @@ namespace P202.Training.WCF
             // Register repositories
             builder.RegisterType<UserRepository>().As<IUserRepository>();
             builder.RegisterType<RoleRepository>().As<IRoleRepository>();
+            builder.RegisterType<ToDoListRepository>().As<IToDoListRepository>();
+            builder.RegisterType<ToDoItemRepository>().As<IToDoItemRepository>();
 
             // Register services
             builder.RegisterType<EchoService>().As<IEchoService>();
             builder.RegisterType<UsersService>().As<IUsersService>();
             builder.RegisterType<RoleService>().As<IRoleService>();
+            builder.RegisterType<ToDoListService>().As<IToDoListService>();
+            builder.RegisterType<ToDoItemService>().As<IToDoItemService>();
 
             // Register Automap
             builder.Register(c => new MapperConfiguration(cfg =>
@@ -41,6 +46,9 @@ namespace P202.Training.WCF
                 cfg.CreateMap<Data.Entities.Role, Domain.Models.Role>();
 
                 cfg.CreateMap<Domain.Models.Role, Data.Entities.Role>();
+
+                cfg.CreateMap<Data.Entities.ToDoList, Domain.Models.ToDoList>().ReverseMap();
+                cfg.CreateMap<Data.Entities.ToDoItem, Domain.Models.ToDoItem>().ForMember(todoList => todoList.ToDoList, m => m.Ignore());
             })).AsSelf().SingleInstance();
 
             builder.Register(c => c.Resolve<MapperConfiguration>().CreateMapper(c.Resolve)).As<IMapper>().InstancePerLifetimeScope();
@@ -65,6 +73,12 @@ namespace P202.Training.WCF
             new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(RoleReadAllRequest).Assembly, agathaContainer).Initialize();
             new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(RoleUpdateRequest).Assembly, agathaContainer).Initialize();
             new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(RoleDeleteRequest).Assembly, agathaContainer).Initialize();
+
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(ToDoListReadRequest).Assembly, agathaContainer).Initialize();
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(ToDoListListRequest).Assembly, agathaContainer).Initialize();
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(ToDoListCreateRequest).Assembly, agathaContainer).Initialize();
+
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(ToDoItemListRequest).Assembly, agathaContainer).Initialize();
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

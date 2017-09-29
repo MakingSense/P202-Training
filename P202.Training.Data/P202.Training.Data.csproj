@@ -53,8 +53,12 @@
   <ItemGroup>
     <Compile Include="Entities\Base.cs" />
     <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\ToDoItem.cs" />
+    <Compile Include="Entities\ToDoList.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="INHibernateSessionManager.cs" />
+    <Compile Include="Mapping\ToDoItemMap.cs" />
+    <Compile Include="Mapping\ToDoListMap.cs" />
     <Compile Include="NHibernateSessionManager.cs" />
     <Compile Include="Mapping\RoleMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
@@ -62,8 +66,12 @@
     <Compile Include="Repositories\IBaseRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
+    <Compile Include="Repositories\IToDoItemRepository.cs" />
+    <Compile Include="Repositories\IToDoListRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\ToDoItemRepository.cs" />
+    <Compile Include="Repositories\ToDoListRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>

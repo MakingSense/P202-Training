@@ -1,0 +1,28 @@
+<section id="TodoItem">
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Priority</th>
+                <th>Created By</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach : toDoItems">
+            <tr>
+                <td>                  
+                    <span data-bind="text:Id"></span>
+                </td>
+                <td>                   
+                    <span data-bind="text:Description"></span>
+                </td>
+                <td>                    
+                    <span data-bind="text:Priority"></span>
+                </td>                
+                <td>                    
+                    <span data-bind="text:CreatedBy"></span>
+                </td>                
+            </tr>
+        </tbody>
+    </table>
+</section>

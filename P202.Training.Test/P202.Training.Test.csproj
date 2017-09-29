@@ -74,6 +74,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RoleServiceTest.cs" />
+    <Compile Include="ToDoItemTest.cs" />
+    <Compile Include="ToDoListTest.cs" />
     <Compile Include="UsersServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
