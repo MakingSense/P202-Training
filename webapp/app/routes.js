@@ -52,5 +52,13 @@ module.exports = [
 			return require('viewModels/toDoItem/toDoItem');
 		},
 			nav: true
+	},	
+	{
+		route: 'AddToDoList', 
+		title: 'AddToDoList',
+		moduleId: function() {
+			return require('viewModels/toDoList/AddToDoList');
+		},
+			nav: false
 	}	
 ];

@@ -9,6 +9,7 @@ using P202.Training.Data;
 using P202.Training.Data.Repositories;
 using P202.Training.Domain;
 using P202.Training.WCF.RequestsAndResponses;
+using P202.Training.WCF.RequestsAndResponses.ToDoListAndToDoItem;
 
 namespace P202.Training.WCF
 {
@@ -72,6 +73,12 @@ namespace P202.Training.WCF
             new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(RoleReadAllRequest).Assembly, agathaContainer).Initialize();
             new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(RoleUpdateRequest).Assembly, agathaContainer).Initialize();
             new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(RoleDeleteRequest).Assembly, agathaContainer).Initialize();
+
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(ToDoListReadRequest).Assembly, agathaContainer).Initialize();
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(ToDoListListRequest).Assembly, agathaContainer).Initialize();
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(ToDoListCreateRequest).Assembly, agathaContainer).Initialize();
+
+            new ServiceLayerConfiguration(Assembly.GetExecutingAssembly(), typeof(ToDoItemListRequest).Assembly, agathaContainer).Initialize();
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
