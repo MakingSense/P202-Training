@@ -46,11 +46,11 @@
     <Reference Include="Agatha.Autofac">
       <HintPath>..\lib\Agatha.Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="Agatha.Common, Version=1.3.1.0, Culture=neutral, PublicKeyToken=6f21cf452a4ffa13, processorArchitecture=MSIL">
-      <HintPath>..\packages\Agatha.Common.1.3.1\lib\net40\Agatha.Common.dll</HintPath>
+    <Reference Include="Agatha.Common, Version=1.3.2.0, Culture=neutral, PublicKeyToken=6f21cf452a4ffa13, processorArchitecture=MSIL">
+      <HintPath>..\packages\Agatha.Common.1.3.2\lib\net40\Agatha.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Agatha.ServiceLayer, Version=1.3.1.0, Culture=neutral, PublicKeyToken=6f21cf452a4ffa13, processorArchitecture=MSIL">
-      <HintPath>..\packages\Agatha.ServiceLayer.1.3.1\lib\net40\Agatha.ServiceLayer.dll</HintPath>
+    <Reference Include="Agatha.ServiceLayer, Version=1.3.2.0, Culture=neutral, PublicKeyToken=6f21cf452a4ffa13, processorArchitecture=MSIL">
+      <HintPath>..\packages\Agatha.ServiceLayer.1.3.2\lib\net40\Agatha.ServiceLayer.dll</HintPath>
     </Reference>
     <Reference Include="Autofac, Version=4.6.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.6.1\lib\net45\Autofac.dll</HintPath>
@@ -116,28 +116,6 @@
     <Compile Include="Handlers\RoleReadHandler.cs" />
     <Compile Include="Handlers\RoleUpdateHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequestsAndResponses\CreateUserRequest.cs" />
-    <Compile Include="RequestsAndResponses\CreateUserResponse.cs" />
-    <Compile Include="RequestsAndResponses\DeleteUserRequest.cs" />
-    <Compile Include="RequestsAndResponses\DeleteUserResponse.cs" />
-    <Compile Include="RequestsAndResponses\EchoResponse.cs" />
-    <Compile Include="RequestsAndResponses\EchoRequest.cs" />
-    <Compile Include="RequestsAndResponses\ListUsersRequest.cs" />
-    <Compile Include="RequestsAndResponses\ListUsersResponse.cs" />
-    <Compile Include="RequestsAndResponses\ReadUserRequest.cs" />
-    <Compile Include="RequestsAndResponses\ReadUserResponse.cs" />
-    <Compile Include="RequestsAndResponses\RoleAddRequest.cs" />
-    <Compile Include="RequestsAndResponses\RoleAddResponse.cs" />
-    <Compile Include="RequestsAndResponses\RoleDeleteRequest.cs" />
-    <Compile Include="RequestsAndResponses\RoleDeleteResponse.cs" />
-    <Compile Include="RequestsAndResponses\RoleReadAllRequest.cs" />
-    <Compile Include="RequestsAndResponses\RoleReadAllResponse.cs" />
-    <Compile Include="RequestsAndResponses\RoleReadRequest.cs" />
-    <Compile Include="RequestsAndResponses\RoleReadResponse.cs" />
-    <Compile Include="RequestsAndResponses\RoleUpdateRequest.cs" />
-    <Compile Include="RequestsAndResponses\RoleUpdateResponse.cs" />
-    <Compile Include="RequestsAndResponses\UpdateUserRequest.cs" />
-    <Compile Include="RequestsAndResponses\UpdateUserResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -163,6 +141,10 @@
     <ProjectReference Include="..\P202.Training.Data\P202.Training.Data.csproj">
       <Project>{e6360cc3-4cde-4b02-829c-7cedc27d4794}</Project>
       <Name>P202.Training.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\P202.Training.WCF.RequestAndResponses\P202.Training.WCF.RequestAndResponses.csproj">
+      <Project>{d02c8311-ca03-4f56-b7ea-2559422e0aca}</Project>
+      <Name>P202.Training.WCF.RequestAndResponses</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

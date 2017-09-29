@@ -2,7 +2,7 @@
 {
     public class EchoService : IEchoService
     {
-        public string GetData(int value)
+        public string GetData(string value)
         {
             return $"You entered: {value}";
         }

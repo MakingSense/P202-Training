@@ -2,8 +2,8 @@
 
 namespace P202.Training.WCF.RequestsAndResponses
 {
-    public class EchoRequest : Request
+    public class ReadUserRequest : Request
     {
-        public string Value { get; set; }
+        public int Id { get; set; }
     }
 }
