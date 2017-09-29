@@ -1,0 +1,30 @@
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Role</th>
+            <th>CreatedBy</th>
+            <th>UpdatedBy</th>
+            <th>CreatedOn</th>
+            <th>UpdatedOn</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: users">
+        <tr>
+            <td data-bind="text: $data.Id"></td>
+            <td data-bind="text: $data.UserName"></td>
+            <td data-bind="text: $data.Email"></td>
+            <td data-bind="text: $data.FirstName"></td>
+            <td data-bind="text: $data.LastName"></td>
+            <td data-bind="text: $data.UserRole.Name"></td>
+            <td data-bind="text: $data.CreatedBy"></td>
+            <td data-bind="text: $data.UpdatedBy"></td>
+            <td data-bind="text: $data.CreatedOn"></td>
+            <td data-bind="text: $data.UpdatedOn"></td>
+        </tr>
+    </tbody>
+</table>

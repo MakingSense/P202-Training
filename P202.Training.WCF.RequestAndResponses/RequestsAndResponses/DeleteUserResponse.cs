@@ -2,8 +2,7 @@
 
 namespace P202.Training.WCF.RequestsAndResponses
 {
-    public class EchoRequest : Request
+    public class DeleteUserResponse : Response
     {
-        public string Value { get; set; }
     }
 }

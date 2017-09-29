@@ -2,7 +2,7 @@
 
 namespace P202.Training.WCF.RequestsAndResponses
 {
-    public class EchoRequest : Request
+    public class EchoResponse : Response
     {
         public string Value { get; set; }
     }

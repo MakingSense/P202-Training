@@ -2,6 +2,6 @@
 {
     public interface IEchoService
     {
-        string GetData(int value);
+        string GetData(string value);
     }
 }
